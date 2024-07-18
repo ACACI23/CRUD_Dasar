@@ -10,18 +10,24 @@ if (isset($_POST['simpan'])) {
     header('location:pasien.php');
 }
 
-if (isset($_GET['idPasien'])) {
-    $idPasien = $_GET['idPasien'];
-    $koneksi->query("DELETE FROM pasien WHERE idPasien = '$idPasien'");
-    header("location:pasien.php");
-}
-
 if (isset($_POST['edit'])) {
     $idPasien = $_POST['idPasien'];
     $nmPasien = $_POST['nmPasien'];
     $jk = $_POST['jk'];
     $alamat = $_POST['alamat'];
-    $koneksi->query("UPDATE pasien SET idPasien='$idPasien', nmPasien='$nmPasien', jk='$jk', alamat='$alamat'");
+    $koneksi->query("UPDATE pasien SET nmPasien='$nmPasien', jk='$jk', alamat='$alamat' WHERE idPasien='$idPasien'");
     header("location:pasien.php");
+}
+
+if (isset($_GET['idPasien'])) {
+    $idPasien = $_GET['idPasien'];
+    echo "<script>
+            var konfirmasi = confirm('Apakah Anda yakin ingin menghapus data ini?');
+            if (konfirmasi) {
+                window.location.href = 'delete_pasien.php?idPasien=$idPasien'; // Redirect ke halaman untuk proses delete
+            } else {
+                window.location.href = 'pasien.php'; // Redirect kembali ke halaman pasien
+            }
+          </script>";
 }
 ?>
