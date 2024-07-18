@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2024 at 05:12 AM
+-- Generation Time: Jul 18, 2024 at 09:48 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -33,6 +33,14 @@ CREATE TABLE `pasien` (
   `jk` char(15) NOT NULL,
   `alamat` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pasien`
+--
+
+INSERT INTO `pasien` (`idPasien`, `nmPasien`, `jk`, `alamat`) VALUES
+('aa', 'aa', 'Perempuan', 'bb'),
+('bb', 'bb', 'Perempuan', 'cktc');
 
 --
 -- Indexes for dumped tables
