@@ -33,13 +33,13 @@
     
     <div class="row mt-3">
       <div class="col-sm">
-        <h3>Tabel Pasien</h3>
+        <h3>Tabel Dokter</h3>
       </div>
     </div>
     
     <div class="row">
       <div class="col">
-        <a href="tambahpasien.php" class="btn btn-primary btn-sm">Tambah Data</a>
+        <a href="tambahdokter.php" class="btn btn-primary btn-sm">Tambah Data</a>
       </div>
     </div>
     
@@ -48,27 +48,27 @@
         <table class="table table-striped table-hover table-sm">
           <tr>
             <th>No</th>
-            <th>ID Pasien</th>
-            <th>Nama Pasien</th>
-            <th>Jenis Kelamin</th>
-            <th>Alamat</th>
+            <th>ID Dokter</th>
+            <th>Nama Dokter</th>
+            <th>Spesialisasi</th>
+            <th>NomorTelepon</th>
             <th>Action</th>
           </tr>
           <?php
           include 'koneksi.php';
           $no = 1;
-          $hasil = $koneksi->query("SELECT * FROM pasien");
+          $hasil = $koneksi->query("SELECT * FROM dokter");
           while ($row = $hasil->fetch_assoc()) {
           ?>
           <tr>
             <td><?= $no++; ?></td>
-            <td><?= $row['idPasien']; ?></td>
-            <td><?= $row['nmPasien']; ?></td>
-            <td><?= $row['jk']; ?></td>
-            <td><?= $row['alamat']; ?></td>
+            <td><?= $row['idDokter']; ?></td>
+            <td><?= $row['nmDokter']; ?></td>
+            <td><?= $row['spesialisasi']; ?></td>
+            <td><?= $row['noTelp']; ?></td>
             <td>
-              <a href="editpasien.php?edit=<?= $row['idPasien']; ?>" class="btn btn-warning btn-sm">Edit</a>
-              <a href="koneksi.php?idPasien=<?= $row['idPasien']; ?>" class="btn btn-danger btn-sm">Hapus</a>
+              <a href="editdokter.php?edit_dokter=<?= $row['idDokter']; ?>" class="btn btn-warning btn-sm">Edit</a>
+              <a href="koneksi.php?idDokter=<?= $row['idDokter']; ?>" class="btn btn-danger btn-sm">Hapus</a>
             </td>
           </tr>
           <?php } ?>

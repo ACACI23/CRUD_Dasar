@@ -33,13 +33,13 @@
     
     <div class="row mt-3">
       <div class="col-sm">
-        <h3>Tabel Pasien</h3>
+        <h3>Tabel Kunjungan</h3>
       </div>
     </div>
     
     <div class="row">
       <div class="col">
-        <a href="tambahpasien.php" class="btn btn-primary btn-sm">Tambah Data</a>
+        <a href="tambahkunjungan.php" class="btn btn-primary btn-sm">Tambah Data</a>
       </div>
     </div>
     
@@ -48,27 +48,29 @@
         <table class="table table-striped table-hover table-sm">
           <tr>
             <th>No</th>
+            <th>ID Kunjungan</th>
+            <th>ID Dokter</th>
             <th>ID Pasien</th>
-            <th>Nama Pasien</th>
-            <th>Jenis Kelamin</th>
-            <th>Alamat</th>
-            <th>Action</th>
+            <th>Tanggal</th>
+            <th>Keluhan</th>
+            <th>Aksi</th>
           </tr>
           <?php
           include 'koneksi.php';
           $no = 1;
-          $hasil = $koneksi->query("SELECT * FROM pasien");
+          $hasil = $koneksi->query("SELECT * FROM kunjungan");
           while ($row = $hasil->fetch_assoc()) {
           ?>
           <tr>
             <td><?= $no++; ?></td>
+            <td><?= $row['idKunjungan']; ?></td>
+            <td><?= $row['idDokter']; ?></td>
             <td><?= $row['idPasien']; ?></td>
-            <td><?= $row['nmPasien']; ?></td>
-            <td><?= $row['jk']; ?></td>
-            <td><?= $row['alamat']; ?></td>
+            <td><?= $row['tanggal']; ?></td>
+            <td><?= $row['keluhan']; ?></td>
             <td>
-              <a href="editpasien.php?edit=<?= $row['idPasien']; ?>" class="btn btn-warning btn-sm">Edit</a>
-              <a href="koneksi.php?idPasien=<?= $row['idPasien']; ?>" class="btn btn-danger btn-sm">Hapus</a>
+              <a href="editkunjungan.php?edit=<?= $row['idKunjungan']; ?>" class="btn btn-warning btn-sm">Edit</a>
+              <a href="koneksi.php?idKunjungan=<?= $row['idKunjungan']; ?>" class="btn btn-danger btn-sm">Hapus</a>
             </td>
           </tr>
           <?php } ?>
@@ -77,5 +79,7 @@
     </div>
   </div>
   
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNvEKT6RfbGrW+6ihGYx6DK3/FEV88Xl0x2lWj0MCkMyZvvFBNxrPbNVoTpf5UG" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-BTV1Iy8Hk17aTKurx8UpPbC7kiQSN9Kf7NYoZKsDAZx9j3j42wbO7Us6D2fAv1yQ" crossorigin="anonymous"></script>
 </body>
 </html>
